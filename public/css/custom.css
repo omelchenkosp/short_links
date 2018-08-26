@@ -1,0 +1,7 @@
+#short_url_wrapper input {
+    width: auto;
+}
+#short_url_wrapper span {
+    line-height: 2.5;
+    padding-right: 10px;
+}
