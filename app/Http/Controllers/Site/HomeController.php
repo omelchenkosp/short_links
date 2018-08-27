@@ -20,8 +20,8 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(20);
 
-        if ($links->isEmpty())
-            return 'No links.';
+//        if ($links->isEmpty())
+//            return 'No links.';
         return view('site.home', compact('links'));
     }
 

@@ -17,7 +17,7 @@
 
                     {{--You are logged in!--}}
 
-                    <table>
+                    <table class="links_table">
                         <tr>
                             <th>Original URL</th>
                             <th>Short URL</th>

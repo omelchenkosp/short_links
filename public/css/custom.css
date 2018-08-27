@@ -5,3 +5,10 @@
     line-height: 2.5;
     padding-right: 10px;
 }
+
+th, td {
+
+
+    padding: 0 5px;
+    border: 1px solid #ece2e2;
+}
