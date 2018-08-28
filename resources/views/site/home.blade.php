@@ -7,16 +7,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Links <a href="/add"><button type="button" class="btn btn-primary float-right">Add new link</button></a></div>
-
                 <div class="card-body">
-                    {{--@if (session('status'))--}}
-                        {{--<div class="alert alert-success" role="alert">--}}
-                            {{--{{ session('status') }}--}}
-                        {{--</div>--}}
-                    {{--@endif--}}
-
-                    {{--You are logged in!--}}
-
                     <table class="links_table">
                         <tr>
                             <th>Original URL</th>
@@ -42,7 +33,6 @@
                                 @else
                                     <td>no data</td>
                                 @endif
-                                {{--<td><a href="info">info</a></td>--}}
                             </tr>
                         @endforeach
                     </table>

@@ -21,18 +21,13 @@
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
-
                     {!! Form::close() !!}
-
                 </div>
             </div>
             <br>
             <div class="card">
                 <div class="card-header">User Links</div>
                 <div class="card-body">
-                    {{--{{ Form::model($user, array('route' => array('profile.update'), 'role'=>'form', 'method' => 'POST', 'enctype'=>'multipart/form-data')) }}--}}
-
-                    {{--{!! Form::close() !!}--}}
                     <table>
                         <tr>
                             <th>Original URL</th>
@@ -41,6 +36,7 @@
                             <th>Date start</th>
                             <th>Date End</th>
                             <th>Analytics</th>
+                            <th></th>
                             <th></th>
                         </tr>
                         @foreach ($links as $link)
@@ -59,6 +55,13 @@
                                 @else
                                     <td>no data</td>
                                 @endif
+                                <td>
+
+
+                                    {!! Form::open(['url'=>route('profile.link.edit',['id'=>$link->id]), 'class'=>'form-horizontal','method' => 'GET']) !!}
+                                    {!! Form::button('Edit',['class'=>'btn btn-primary','type'=>'submit']) !!}
+                                    {!! Form::close() !!}
+                                </td>
                                 <td>
                                     {!! Form::open(['url'=>route('profile.link.destroy',['id'=>$link->id]), 'class'=>'form-horizontal','method' => 'POST']) !!}
                                     {{ method_field('DELETE') }}

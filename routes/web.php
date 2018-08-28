@@ -33,8 +33,11 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin', 'auth'], 'namespace' =>
 
 Route::group(['prefix'=>'profile', 'middleware'=>['auth'], 'namespace' => 'Profile'], function() {
     Route::get('/', ['uses' => 'HomeController@index', 'as' => 'profile.home']);
+
+    Route::post('/link_update', ['uses' => 'HomeController@link_update', 'as' => 'profile.link.update']);
     Route::post('/update', ['uses' => 'HomeController@update', 'as' => 'profile.update']);
     Route::delete('/delete', ['uses' => 'HomeController@destroy', 'as' => 'profile.link.destroy']);
+    Route::get('/links/{id}', ['uses' => 'HomeController@link_edit', 'as' => 'profile.link.edit']);
 });
 
 Route::group(['namespace' => 'Site'], function() {
