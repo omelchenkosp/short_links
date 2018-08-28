@@ -32,7 +32,7 @@ class HomeController extends Controller
 
         $validatedData = $request->validate([
 //            'url_short' => 'alpha|unique:links,url_short,except,id',
-            'url_short' => 'alpha|unique:links,url_short',
+            'url_short' => 'nullable|alpha|unique:links,url_short',
         ]);
 
         $user = Auth::user();

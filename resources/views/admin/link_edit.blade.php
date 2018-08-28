@@ -30,6 +30,14 @@
                         {!! Form::open(['url' => route('admin.link.update', ['link_id'=>$link['id']]), 'role'=>'form', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
 
                         <div class="form-group">
+                            <div class="form-group clearfix">
+                                <br>
+                                <p>You can change link Short URL and lifetime:</p>
+                                <div id="short_url_wrapper">
+                                    <span class="float-left">{{ url('/').'/' }}</span>
+                                    {!! Form::text('url_short', old('url_short'), ['class' => 'form-control float-left', 'placeholder'=>'Enter ...'])!!}
+                                </div>
+                            </div>
                             {!! Form::label('lifetime','New Lifetime:') !!}
                             <?php
 //                                $life = 'f';

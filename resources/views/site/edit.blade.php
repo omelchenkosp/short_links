@@ -49,7 +49,7 @@
                             {!! Form::select('lifetime', ['f' => 'Forever', 'm' => 'Month', 'w' => 'Week', 'm' => 'Month', 'd' => 'Number of days', 'h' => 'Number of hours'], ['class' => 'form-control']) !!}
                         </div>
                         <div style="display:none" id="lifetime_val" class="form-group">
-                            {!! Form::label('url_short', 'Short URL:') !!}
+                            {{--{!! Form::label('url_short', 'Short URL:') !!}--}}
                             {!! Form::text('lifetime_val', old('lifetime_val'), ['class' => 'form-control', 'placeholder'=>'Enter ...'])!!}
                         </div>
                         {!! Form::hidden('link_time', old('link_time'), ['id' => 'link_time', 'class' => 'form-control', 'placeholder'=>'Enter ...'])!!}

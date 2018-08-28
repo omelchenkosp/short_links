@@ -75,11 +75,25 @@ class HomeController extends Controller
 
     public function link_update(Request $request)
     {
+        $validatedData = $request->validate([
+//            'url_short' => 'alpha|unique:links,url_short,except,id',
+            'url_short' => 'nullable|alpha|unique:links,url_short',
+        ]);
+
         $link = Link::find($request['link_id']);
+
+        if (!$link)
+            return redirect()->route('profile.home');
+
+        if ($request['url_short']) {
+            $link['url_short'] = $request['url_short'];
+        }
+
         if ($request['link_time']) {
             $link['date_end'] = $link['date_start'] + $request['link_time'];
         } else $link['date_end'] = Null;
         $link->update();
         return redirect()->route('admin.links');
+        
     }
 }
