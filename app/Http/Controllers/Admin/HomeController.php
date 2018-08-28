@@ -54,7 +54,7 @@ class HomeController extends Controller
     public function user_destroy(Request $request)
     {
         $user_id = $request['id'];
-        $user = User::find($user_id);
+        $user = User::withTrashed()->find($user_id);
         $user->forcedelete();
         return redirect()->route('admin.users')->with('success','Post deleted successfully');
     }
@@ -94,6 +94,6 @@ class HomeController extends Controller
         } else $link['date_end'] = Null;
         $link->update();
         return redirect()->route('admin.links');
-        
+
     }
 }
