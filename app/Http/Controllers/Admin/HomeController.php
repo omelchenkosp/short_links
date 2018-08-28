@@ -78,7 +78,7 @@ class HomeController extends Controller
         $link = Link::find($request['link_id']);
         if ($request['link_time']) {
             $link['date_end'] = $link['date_start'] + $request['link_time'];
-        }
+        } else $link['date_end'] = Null;
         $link->update();
         return redirect()->route('admin.links');
     }

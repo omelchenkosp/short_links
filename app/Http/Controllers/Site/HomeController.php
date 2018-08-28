@@ -95,8 +95,8 @@ class HomeController extends Controller
             }
             if ($request['link_time']) {
                 $link['date_end'] = $link['date_start'] + $request['link_time'];
-            }
-            $link->update();
+            } else $link['date_end'] = Null;
+                $link->update();
         }
         return redirect()->route('site.link', [$link['id']]);
     }
