@@ -46,7 +46,7 @@ class HomeController extends Controller
     public function user_enable(Request $request)
     {
         $user_id = $request['id'];
-        $user = User::withTrashed()->find(3);
+        $user = User::withTrashed()->find($user_id);
         $user->restore();
         return redirect()->route('admin.users')->with('success','Post deleted successfully');
     }
