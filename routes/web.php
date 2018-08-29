@@ -24,8 +24,10 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin', 'auth'], 'namespace' =>
     Route::get('/links', ['uses' => 'HomeController@links', 'as' => 'admin.links']);
     Route::get('/links/{id}', ['uses' => 'HomeController@link_edit', 'as' => 'admin.link.edit']);
     Route::post('/links/update', ['uses' => 'HomeController@link_update', 'as' => 'admin.link.update']);
+    Route::put('/users/update/{id}', ['uses' => 'HomeController@user_update', 'as' => 'admin.user.update']);
     Route::get('/users', ['uses' => 'HomeController@users', 'as' => 'admin.users']);
     Route::delete('/users/delete', ['uses' => 'HomeController@user_destroy', 'as' => 'admin.user.delete']);
+    Route::get('/users/{id}', ['uses' => 'HomeController@user_edit', 'as' => 'admin.user.edit']);
     Route::delete('/users/disable', ['uses' => 'HomeController@user_disable', 'as' => 'admin.user.disable']);
     Route::post('/users/enable', ['uses' => 'HomeController@user_enable', 'as' => 'admin.user.enable']);
     Route::delete('/delete', ['uses' => 'HomeController@destroy', 'as' => 'admin.link.destroy']);

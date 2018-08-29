@@ -14,11 +14,21 @@
             <div class="card">
                 <div class="card-header">Users</div>
                 <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <table>
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Enabled</th>
+                            <th>Edit</th>
                             <th></th>
                         </tr>
                         @foreach ($users as $user)
@@ -26,7 +36,6 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-{{--                                    {{ Form::checkbox('name', 'value', true) }}--}}
                                     @if(!$user->deleted_at)
                                         {!! Form::open(['url'=>route('admin.user.disable',['id'=>$user->id]), 'class'=>'form-horizontal','method' => 'POST']) !!}
                                         {{ method_field('DELETE') }}
@@ -39,6 +48,11 @@
                                         {!! Form::button('Enable',['class'=>'btn btn-primary','type'=>'submit']) !!}
                                         {!! Form::close() !!}
                                     @endif
+                                </td>
+                                <td>
+                                    {!! Form::open(['url'=>route('admin.user.edit',['id'=>$user->id]), 'class'=>'form-horizontal','method' => 'GET']) !!}
+                                    {!! Form::button('Edit',['class'=>'btn btn-primary','type'=>'submit']) !!}
+                                    {!! Form::close() !!}
                                 </td>
                                 <td>
                                     {!! Form::open(['url'=>route('admin.user.delete',['id'=>$user->id]), 'class'=>'form-horizontal','method' => 'POST']) !!}

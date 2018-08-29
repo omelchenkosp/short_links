@@ -51,6 +51,15 @@ class HomeController extends Controller
         return redirect()->route('admin.users')->with('success','Post deleted successfully');
     }
 
+    public function user_edit($id)
+    {
+        $user_id = $id;
+        $user = User::withTrashed()->find($user_id);
+        if (!$user)
+            return redirect()->route('admin.users');
+        return view('admin.user_edit', compact('user'));
+    }
+
     public function user_destroy(Request $request)
     {
         $user_id = $request['id'];
@@ -94,6 +103,32 @@ class HomeController extends Controller
         } else $link['date_end'] = Null;
         $link->update();
         return redirect()->route('admin.links');
+
+    }
+
+    public function user_update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+//            'url_short' => 'alpha|unique:links,url_short,except,id',
+            'name' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = User::withTrashed()->find($id);
+
+        if (!$user)
+            return redirect()->route('admin.links');
+
+        if ($request['name']) {
+            $$user['name'] = $request['name'];
+        }
+
+        if ($request['password']) {
+            $user['password'] = bcrypt($request['password']);
+        }
+
+        $user->update();
+        return redirect()->route('admin.users');
 
     }
 }
